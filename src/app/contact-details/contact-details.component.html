@@ -1,0 +1,73 @@
+<ng-container *ngIf="global.activeContact.id">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <div class="contact-details__upper_section" [ngSwitch]="global.isEditing">
+            <h1 class="contact-details__heading_name">
+                <span *ngSwitchCase="false">{{global.activeContact.firstName}} {{global.activeContact.lastName}}</span>
+            </h1>
+            <ng-container *ngSwitchCase="true">
+                    <h1 class="contact-details__heading_name">
+                    <input class="contact-details__inline contact-details__input_names" type="text" value="{{global.activeContact.firstName}}" formControlName="firstName">
+                    <input class="contact-details__inline contact-details__input_names" type="text" value="{{global.activeContact.lastName}}" formControlName="lastName">
+                    </h1>
+                    <p></p>
+                    <span class="contact-details__inline contact-details__info_heading">first name</span>
+                    <span class="contact-details__inline contact-details__info_heading">last name</span>
+            </ng-container>
+        </div>
+        <section>
+                <table>
+                    <tr>
+                        <td class="contact-details__table_left_heading contact-details__info_heading">phone</td>
+                        <td class="contact-details__table_right_text">
+                            <div [ngSwitch]="global.isEditing">
+                                <span *ngSwitchCase="false">{{global.activeContact.phone}}</span>
+                                <input *ngSwitchCase="true" type="text" value="{{global.activeContact.phone}}" formControlName="phone">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="contact-details__table_left_heading contact-details__info_heading">email</td>
+                        <td class="contact-details__table_right_text">
+                            <div [ngSwitch]="global.isEditing">
+                                <a *ngSwitchCase="false" href="mailto:{{global.activeContact.email}}">{{global.activeContact.email}}</a>
+                                <input *ngSwitchCase="true" type="text" value="{{global.activeContact.email}}" formControlName="email">
+                            </div>
+                        </td>
+                    </tr>  
+                    <tr>
+                        <td class="contact-details__table_left_heading contact-details__info_heading">address</td>
+                        <td class="contact-details__table_right_text">
+                            <div [ngSwitch]="global.isEditing">
+                                <span *ngSwitchCase="false">{{global.activeContact.address}}</span>
+                                <input *ngSwitchCase="true" type="text" value="{{global.activeContact.address}}" formControlName="address">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="contact-details__table_left_heading contact-details__info_heading">note</td>
+                        <td class="contact-details__table_right_text">
+                            <div [ngSwitch]="global.isEditing">
+                                <span *ngSwitchCase="false">{{global.activeContact.note}}</span>
+                                <textarea cols="40" rows="5" *ngSwitchCase="true" type="text" value="{{global.activeContact.note}}" formControlName="note"></textarea>
+                            </div>
+                        </td>
+                    </tr>                    
+                </table>
+        </section>
+    </form>
+    <footer class="contact-details__footer">
+        <button (click)=prepareCreateForm() class="contact-details__general_button">
+            +
+        </button>
+        <ng-container [ngSwitch]="global.isEditing">
+            <button *ngSwitchCase="false" class="contact-details__edit_button contact-details__general_button" (click)=startEditing()>
+                Edit
+            </button>
+            <button *ngSwitchCase="true" class="contact-details__edit_button contact-details__general_button" (click)=onSubmit() [disabled]='!contactForm.valid'>
+                Done
+            </button>
+        </ng-container>
+    </footer>
+</ng-container>
+
+

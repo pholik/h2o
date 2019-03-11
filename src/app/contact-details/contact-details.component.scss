@@ -1,0 +1,53 @@
+@import "../../assets/_variables.scss";
+
+.contact-details__heading_name {
+    font-size: 50px;
+}
+
+.contact-details__upper_section {
+    padding-bottom: 120px;
+}
+
+table tr {
+    border-bottom: 1px solid $line_color;
+}
+
+.contact-details__table_left_heading {
+    padding-left: 100px;
+    width: 20%;
+    text-align: right;
+}
+
+.contact-details__info_heading {
+    color: $heading_gray;
+}
+
+
+.contact-details__table_right_text {
+    padding-left: 10px;
+    width: 80%;
+    text-align: left;
+}
+
+.contact-details__footer {
+    position: absolute;
+    box-sizing: border-box;
+    left: 50px;
+    right: 50px;
+    bottom: 30px;
+}
+
+.contact-details__edit_button {
+    float: right;
+}
+
+.contact-details__inline {
+    display: inline-block;
+    width: 40%;
+}
+
+.contact-details__general_button {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 5px 15px;
+}
